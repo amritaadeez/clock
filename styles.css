@@ -2,16 +2,79 @@ body {
   text-align: center;
   width: 100%;
   height: 100vh;
-  background: #091921;
+  background-color: #091921;
+  background-image: 
+    linear-gradient(30deg, #0a1f2a 12%, transparent 12.5%, transparent 87%, #0a1f2a 87.5%, #0a1f2a),
+    linear-gradient(150deg, #0a1f2a 12%, transparent 12.5%, transparent 87%, #0a1f2a 87.5%, #0a1f2a),
+    linear-gradient(30deg, #0a1f2a 12%, transparent 12.5%, transparent 87%, #0a1f2a 87.5%, #0a1f2a),
+    linear-gradient(150deg, #0a1f2a 12%, transparent 12.5%, transparent 87%, #0a1f2a 87.5%, #0a1f2a),
+    linear-gradient(60deg, #0a1f2a77 25%, transparent 25.5%, transparent 75%, #0a1f2a77 75%, #0a1f2a77),
+    linear-gradient(60deg, #0a1f2a77 25%, transparent 25.5%, transparent 75%, #0a1f2a77 75%, #0a1f2a77);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   margin: auto;
+  /* overflow: hidden; */
+}
+
+/* Add animation for ticking effect */
+@keyframes tick {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.tick-animation {
+  animation: tick 0.1s ease-in-out;
+}
+
+/* Optional: Add a subtle glow effect to the clock */
+.clock {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+  left: 8px;
+  top: 8px;
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+    0 15px 15px rgba(0, 0, 0, 0.3),
+    inset 0 15px 15px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(21, 108, 151, 0.2); /* Added subtle blue glow */
+  transition: box-shadow 0.3s ease;
+}
+
+.clock:hover {
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+    0 15px 15px rgba(0, 0, 0, 0.3),
+    inset 0 15px 15px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(21, 108, 151, 0.4); /* Enhanced glow on hover */
+}
+
+/* Sound control button */
+.sound-control {
+  display: none; /* or you can completely delete this block */
+}
+
+.sound-control:hover {
+  display: none; /* or you can completely delete this block */
+}
+
+.sound-control i {
+  display: none; /* or you can completely delete this block */
+}
+
+.sound-control.muted i::before {
+  display: none; /* or you can completely delete this block */
 }
 
 .clock-section {
+  flex: 2;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: auto;
-  height: 80%;
+  margin: 10% auto;
 }
 
 .clock-outer {
@@ -115,18 +178,44 @@ body {
   color: #f6f6f6;
 }
 
-.date-time {
-  bottom: 20%;
-  position: absolute;
-  left: 43%;
-  border: 1px solid #6d6491;
-  font-size: 12px;
-  padding: 0.25rem 0.5rem;
-  border-radius: 10px;
+/* Updated date-time container styles */
+.clock-date-time-container {
   display: flex;
-  color: #6d6491;
-  opacity: 0.5;
-  gap: 5px;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.date-time {
+  border: 1px solid #156c97;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 15px;
+  color: #f6f6f6;
+  opacity: 0.9;
+  background: rgba(7, 54, 78, 0.3);
+  transition: all 0.3s ease;
+  min-width: 150px;
+  text-align: center;
+}
+
+.digital-clock {
+  border: 1px solid #156c97;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 15px;
+  color: #f6f6f6;
+  opacity: 0.9;
+  background: rgba(7, 54, 78, 0.3);
+  transition: all 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Remove the digital clock container styles since we moved it */
+.digital-clock-container {
+  display: none;
 }
 
 .second-hand::after {
@@ -172,4 +261,291 @@ body {
   border-radius: 20px;
   color: #f6f6f6;
   padding: 0.5rem 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 90vh; /* Adjust container height */
+  align-items: flex-start;
+}
+
+.info-section {
+  flex: 1; /* Takes up less space */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%; 
+  width: 100%; 
+}
+
+.digital-clock-container {
+  text-align: center;
+}
+
+.current-timezone {
+  color: #f6f6f6;
+  margin-top: 10px;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.world-time-list {
+  background: rgba(7, 54, 78, 0.3); /* Updated to match clock background */
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+    0 15px 15px rgba(0, 0, 0, 0.3),
+    inset 0 15px 15px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(21, 108, 151, 0.2); /* Added subtle blue glow */
+  border: 1px solid #156c97; 
+  max-height: calc(100vh - 240px);
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px; /* Add small margin from top */
+}
+
+.world-time-list h3 {
+  color: #f6f6f6;
+  margin: 0 0 20px 0;
+  font-size: 1.2em;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #156c97;
+  padding-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background: rgba(7, 54, 78, 0.3);
+  z-index: 1;
+}
+
+.time-zones {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  padding-right: 10px;
+  flex-grow: 1;
+  height: calc(100% - 60px); /* Account for header height */
+}
+
+/* Customize scrollbar */
+.time-zones::-webkit-scrollbar {
+  width: 8px;
+}
+
+.time-zones::-webkit-scrollbar-track {
+  background: rgba(7, 54, 78, 0.2);
+  border-radius: 4px;
+}
+
+.time-zones::-webkit-scrollbar-thumb {
+  background: #156c97;
+  border-radius: 4px;
+}
+
+.time-zones::-webkit-scrollbar-thumb:hover {
+  background: #1a8ac2;
+}
+
+.time-zone-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(7, 54, 78, 0.2); /* Updated background */
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  margin-bottom: 8px; /* Added spacing between items */
+}
+
+.time-zone-item:hover {
+  background: rgba(21, 108, 151, 0.2);
+  transform: translateX(5px);
+  box-shadow: 0 0 15px rgba(21, 108, 151, 0.1);
+}
+
+.time-zone-item.active {
+  background: rgba(21, 108, 151, 0.2);
+  border-left: 4px solid #156c97;
+  box-shadow: 0 0 20px rgba(21, 108, 151, 0.2);
+}
+
+.city {
+  color: #f6f6f6;
+  font-weight: 500;
+  flex: 1;
+  font-size: 14px;
+}
+
+.time {
+  color: #f6f6f6;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 0 15px;
+  min-width: 90px; /* Added to ensure consistent width */
+  text-align: right;
+}
+
+.date {
+  color: #f6f6f6;
+  opacity: 0.7;
+  font-size: 0.9em;
+  min-width: 100px; /* Added to ensure consistent width */
+  text-align: right;
+}
+
+/* Remove reset button styles */
+.reset-button {
+  display: none;
+}
+
+/* Updated clock name styles */
+.clock-name {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #156c97;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 0 10px rgba(21, 108, 151, 0.3);
+  transition: all 0.3s ease;
+  padding: 5px 15px;
+  border: 1px solid #156c97;  /* Added border */
+  border-radius: 15px;  /* Rounded corners */
+  background: rgba(21, 108, 151, 0.1);  /* Subtle background */
+}
+
+.clock-name:hover {
+  opacity: 1;
+  background: rgba(21, 108, 151, 0.2);
+  box-shadow: 0 0 15px rgba(21, 108, 151, 0.2);
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* Update date box and month box styles */
+.date-box, .month-box {
+  min-width: 20px;
+  font-weight: 500;
+}
+
+/* Add header styles */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  margin-bottom: 20px;
+  color: #f6f6f6;
+  background: rgba(7, 54, 78, 0.3);
+  border-bottom: 1px solid #156c97;
+}
+
+/* Create a container for the title section */
+.header-title {
+  text-align: left;
+}
+
+/* Move the existing h1 and p styles under header-title */
+.header-title h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #156c97;
+  text-shadow: 0 0 10px rgba(21, 108, 151, 0.3);
+}
+
+.header-title p {
+  font-size: 1.1rem;
+  margin: 10px 0 0;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+/* Style the header datetime section */
+.header-datetime {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Update date-time and digital-clock styles */
+.date-time, .digital-clock {
+  border: 1px solid #156c97;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 15px;
+  color: #f6f6f6;
+  opacity: 0.9;
+  background: rgba(7, 54, 78, 0.3);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* Remove the old clock-date-time-container */
+.clock-date-time-container {
+  display: none;
+}
+
+/* Update container margin to account for header */
+.container {
+  margin-top: 20px;
+}
+
+/* Add responsive styles for header */
+@media (max-width: 968px) {
+  .site-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .header-title {
+    text-align: center;
+  }
+
+  .header-title h1 {
+    font-size: 2rem;
+  }
+  
+  .header-title p {
+    font-size: 1rem;
+  }
+
+  .header-datetime {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 968px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .clock-section {
+    height: auto;
+    margin-bottom: 40px; /* Add more space below clock on mobile */
+  }
+  
+  .world-time-list {
+    height: 60vh; /* Adjust height for mobile view */
+    margin-top: 0;
+  }
 }

@@ -4,34 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Analog Clock</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>World Time Clock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- <span class="heading">Analog Clock</span> -->
-    <div class="clock-section">
-          <div class="clock-outer">
-      
-        <div class="clock">
-      <div class="clock-face">
-        <div class="date-time">
-          <!-- <div class="date-box">  </div>
-          <div class="month-box">  </div> -->
+    <header class="site-header">
+      <div class="header-title">
+        <h1>World Time Analog Clock</h1>
+        <p>Track Time Across the Globe</p>
+      </div>
+      <div class="header-datetime">
+        <div class="date-time"></div>
+        <div class="digital-clock"></div>
+      </div>
+    </header>
+    
+    <div class="container">
+      <div class="clock-section">
+        <div class="clock-outer">
+          <div class="clock">
+            <div class="clock-face">
+              <div class="clock-name">Amrit</div>
+              <div class="pointer"></div>
+              <div class="pointer-upper"></div>
+              <div class="hand second-hand"></div>
+              <div class="hand second-hand-back"></div>
+              <div class="hand hour-hand"></div>
+              <div class="hand minute-hand"></div>
+            </div>
+          </div>
         </div>
-        <div class="pointer"></div>
-        <div class="pointer-upper"></div>
-        <div class="hand second-hand"></div>
-        <div class="hand second-hand-back"></div>
-        <div class="hand hour-hand"></div>
-        <div class="hand minute-hand"></div>
+        
+        <div class="clock-date-time-container">
+          <div class="date-time"></div>
+          <div class="digital-clock"></div>
+        </div>
+      </div>
+      
+      <div class="info-section">
+        <div class="world-time-list">
+          <h3>World Times</h3>
+          <div class="time-zones">
+            <div class="time-zone-item active" data-timezone="Asia/Kolkata">
+              <div class="city">New Delhi</div>
+            </div>
+            <div class="time-zone-item" data-timezone="America/New_York">
+              <div class="city">New York</div>
+            </div>
+            <div class="time-zone-item" data-timezone="Europe/London">
+              <div class="city">London</div>
+            </div>
+            <div class="time-zone-item" data-timezone="Asia/Tokyo">
+              <div class="city">Tokyo</div>
+
+            </div>
+            <div class="time-zone-item" data-timezone="Australia/Sydney">
+              <div class="city">Sydney</div>
+            </div>
+            <div class="time-zone-item" data-timezone="Asia/Dubai">
+              <div class="city">Dubai</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-   
-    </div>
-    <div class="digital-clock">
-      
-    </div>
-
     <script src="script.js"></script>
+    <button class="sound-control" onclick="toggleSound()">
+      <i class="fas fa-volume-up"></i>
+    </button>
   </body>
 </html>
